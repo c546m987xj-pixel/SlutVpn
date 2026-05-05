@@ -1,1 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SLUT VPN | Невидимый интерьер</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background-color: #05020a;
+            font-family: 'Inter', sans-serif;
+            color: #f0ebff;
+            overflow-x: hidden;
+        }
+
+        /* фиолетово-черный градиентный фон + динамика */
+        .orb {
+            position: fixed;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(120, 40, 250, 0.25), rgba(5, 2, 15, 0) 70%);
+            top: -20vh;
+            right: -20vw;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: -2;
+            pointer-events: none;
+            animation: floatOrb 22s infinite alternate ease-in-out;
+        }
+
+        .orb2 {
+            left: -30vw;
+            bottom: -30vh;
+            top: auto;
+            right: auto;
+            background: radial-gradient(circle, rgba(180, 50, 255, 0.2), transparent 70%);
+            width: 90vw;
+            height: 90vw;
+            filter: blur(120px);
+            animation: floatOrb 28s infinite alternate-reverse;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            100% { transform: translate(5%, 8%) scale(1.2); opacity: 0.9; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikgb3BhY2l0eT0iMC4xNSIvPjwvc3ZnPg==');
+            background-repeat: repeat;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.8rem 2rem 4rem;
+            position: relative;
+        }
+
+        /* header с лого-видео */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(160, 100, 255, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .video-logo {
+            width: 54px;
+            height: 54px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #2a0f4a;
+            box-shadow: 0 0 12px #a55cff;
+            transition: transform 0.3s ease;
+        }
+        .video-logo:hover {
+            transform: scale(1.03);
+        }
+
+        .video-logo video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(125deg, #ECB2FF, #b87cff, #9d4eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav a {
+            color: #ddd6fe;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav a:hover { color: #c084fc; transform: translateY(-2px); display: inline-block;}
+
+        /* hero */
+        .hero {
+            text-align: center;
+            padding: 3rem 0 4rem;
+        }
+        .hero .badge {
+            background: rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(6px);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid #9b6eff30;
+            margin-bottom: 2rem;
+            animation: pulseGlow 2s infinite;
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(155, 110, 255, 0.2);}
+            70% { box-shadow: 0 0 0 10px rgba(155, 110, 255, 0);}
+            100% { box-shadow: 0 0 0 0 rgba(155, 110, 255, 0);}
+        }
+        .hero h1 {
+            font-size: 4.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #F0E6FF, #cba6ff, #bb88ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 1.5rem auto;
+            color: #cbc3e8;
+        }
+        .btn-primary {
+            background: linear-gradient(105deg, #8b5cf6, #b45eff);
+            border: none;
+            padding: 1rem 2.6rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(100, 50, 200, 0.4);
+            transition: 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 28px -8px #8b5cf6;
+        }
+        /* преимущества — карточки */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 5rem 0;
+        }
+        .feat {
+            background: rgba(20, 10, 35, 0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(180, 130, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .feat:hover { border-color: #b77eff; transform: translateY(-8px) scale(1.02); background: rgba(45, 25, 70, 0.7);}
+        .feat i { font-size: 2.2rem; color: #c084fc; margin-bottom: 1rem; display: inline-block; transition: transform 0.2s;}
+        .feat:hover i { transform: rotate(3deg) scale(1.05);}
+        .feat h3 { font-size: 1.4rem; margin-bottom: 0.5rem;}
+        .feat p { color: #c4b5fd; font-size: 0.9rem; line-height: 1.4;}
+        
+        /* пинг-тестер */
+        .ping-card {
+            background: rgba(25, 12, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border: 1px solid rgba(170, 100, 255, 0.5);
+        }
+        .ping-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+        }
+        .ping-value {
+            font-family: monospace;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #b480ff;
+        }
+        .ping-btn {
+            background: rgba(100, 60, 180, 0.5);
+            border: 1px solid #b77eff;
+            padding: 0.6rem 1.6rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .ping-btn:hover {
+            background: #8b5cf6;
+            transform: scale(0.96);
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+        .stat {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .stat:hover { transform: scale(1.05);}
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #e2d5ff, #b980ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* gift секция */
+        .gift-section {
+            margin: 6rem 0 3rem;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+            background: linear-gradient(125deg, rgba(80, 40, 140, 0.4), rgba(25, 10, 45, 0.7));
+            backdrop-filter: blur(16px);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid rgba(170, 100, 255, 0.5);
+        }
+        .gift-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sub-link {
+            background: #0f071d;
+            font-family: monospace;
+            padding: 0.8rem 1.6rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border: 1px solid #a46eff;
+        }
+        .flex-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .btn-secondary {
+            background: rgba(100, 60, 170, 0.4);
+            border: 1px solid #b77eff;
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: #8b5cf6;
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+        /* сердечные анимации */
+        .heartbeat {
+            animation: heartbeatAnim 1.2s ease infinite;
+        }
+        @keyframes heartbeatAnim {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.08); text-shadow: 0 0 8px #ff66cc;}
+            100% { transform: scale(1);}
+        }
+        footer {
+            margin-top: 5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #7f6b9e;
+            border-top: 1px solid #2e1e4a;
+            padding-top: 2rem;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 1rem 1.2rem 2rem; }
+            .hero h1 { font-size: 2.6rem; }
+            .logo-text { font-size: 1.5rem; }
+            .nav a { margin-left: 1rem; font-size: 0.9rem; }
+            .ping-value { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="orb"></div>
+<div class="orb orb2"></div>
+<div class="noise"></div>
+
+<div class="container">
+    <header>
+        <div class="logo">
+            <div class="video-logo">
+                <video autoplay loop muted playsinline id="slutVideo" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%23944eff' cx='50' cy='50' r='50'/%3E%3Ctext x='50' y='67' font-size='48' fill='white' text-anchor='middle'%3E💜%3C/text%3E%3C/svg%3E">
+                    <source src="anim.mp4" type="video/mp4">
+                </video>
+            </div>
+            <span class="logo-text">SLUT VPN</span>
+        </div>
+        <div class="nav">
+            <a href="#">Возможности</a>
+            <a href="#">Безопасность</a>
+            <a href="https://t.me/vpnslutbot" target="_blank"><i class="fab fa-telegram"></i> Бот</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="badge">⚡ Совершенно невидимая сеть</div>
+        <h1>Интерьер без <br> цензуры</h1>
+        <p>Никаких белых списков, замедлений и блоков. Просто работающий VPN для обычной жизни.</p>
+        <button class="btn-primary" id="mainTelegramBtn"><i class="fab fa-telegram"></i> Получить доступ</button>
+    </section>
+
+    <!-- Интерактивный пинг-тестер -->
+    <div class="ping-card" id="pingWidget">
+        <div class="ping-info">
+            <i class="fas fa-satellite-dish" style="font-size: 1.8rem; color:#b87eff;"></i>
+            <span>Быстрейший сервер (SLUT FastNode) :</span>
+            <span class="ping-value" id="pingMs">--</span>
+            <span>мс</span>
+        </div>
+        <div class="ping-btn" id="checkPingBtn"><i class="fas fa-sync-alt"></i> Замерить пинг</div>
+    </div>
+
+    <!-- Преимущества с анимациями -->
+    <div class="features">
+        <div class="feat">
+            <i class="fas fa-mask"></i>
+            <h3>Маскировка под белые списки</h3>
+            <p>Ваш трафик выглядит как обычный визит на Госуслуги, Яндекс или VK. Невидим для DPI.</p>
+        </div>
+        <div class="feat">
+            <i class="fas fa-bolt"></i>
+            <h3>Молниеносные серверы</h3>
+            <p>Выделенные мощности в Европе и Азии. Никаких гиговых ограничений — для обычной жизни.</p>
+        </div>
+        <div class="feat">
+            <i class="fas fa-shield-haltered"></i>
+            <h3>Никаких логов</h3>
+            <p>Privacy First. Не храним ваши действия, не передаём третьим лицам.</p>
+        </div>
+        <div class="feat">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Работает везде</h3>
+            <p>Happ, Incy, VLESS-клиенты. iOS, Android, Windows, Mac — 2 минуты на настройку.</p>
+        </div>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat"><div class="stat-number" id="statServers">12+</div><div class="stat-label">высокоскоростных узлов</div></div>
+        <div class="stat"><div class="stat-number" id="statCountries">6</div><div class="stat-label">маскировочных доменов</div></div>
+        <div class="stat"><div class="stat-number" id="statOnline">∞</div><div class="stat-label">безлимитный трафик</div></div>
+    </div>
+
+    <!-- блок с объяснением "почему мы лучше" + сердечко анимация -->
+    <div style="background: rgba(70, 30, 120, 0.2); border-radius: 2rem; padding: 2rem; margin: 3rem 0; text-align: center;">
+        <i class="fas fa-heart" id="heartIcon" style="font-size: 2.8rem; color: #ff66cc; cursor: pointer; transition: 0.2s;"></i>
+        <h3 style="margin: 0.5rem 0;">Обходим всё, что можно обойти</h3>
+        <p style="max-width: 700px; margin: 0 auto; color: #cfc2f0;">Белые списки РКН? REALITY-протокол + контрольная маскировка под eh.vk.com и домены из вечнозелёного списка. SLUT VPN не умеет врать — он просто становится частью легального трафика.</p>
+    </div>
+
+    <!-- СКРЫТАЯ БЕСПЛАТНАЯ ПОДПИСКА (появляется при скролле вниз) -->
+    <div id="secretGift" class="gift-section">
+        <div class="gift-badge"><i class="fas fa-gift"></i> Специально для тебя</div>
+        <h3>✨ Бесплатная подписка ✨</h3>
+        <p>Прятали в самом низу, но ты нашел(ла). Получи доступ к приватному серверу с обходом белых списков — бесплатно.</p>
+        <div class="sub-link" id="freeSubUrl">https://c546m987xj-pixel.github.io/slut_sub/</div>
+        <div class="flex-btns">
+            <button class="btn-secondary" id="copyFreeBtn"><i class="far fa-copy"></i> Копировать ссылку</button>
+            <button class="btn-secondary" id="addToHappBtn"><i class="fas fa-plus-circle"></i> Добавить в Happ</button>
+        </div>
+        <p style="font-size: 0.7rem; margin-top: 1rem; opacity: 0.7;">Подписка работает в Happ, Incy, V2rayNG, NekoBox, Shadowrocket. Платный премиум-доступ — в Telegram-боте.</p>
+    </div>
+
+    <footer>
+        <p>SLUT VPN — приватная сеть нового поколения. Не для гиков, а для людей. <br> Платный доступ улучшает скорость и даёт приоритет, но и бесплатный сервер ломает блокировки.</p>
+        <p style="margin-top: 0.5rem;">© 2026 SLUT • Telegram: <a href="https://t.me/vpnslutbot" style="color:#c084fc;">@vpnslutbot</a></p>
+    </footer>
+</div>
+
+<script>
+    (function() {
+        // Конфигурация
+        const freeSubscriptionUrl = "https://c546m987xj-pixel.github.io/slut_sub/";
+        
+        // 1. Пинг-виджет: рандомное значение от 10 до 30 мс + анимация замера
+        const pingSpan = document.getElementById('pingMs');
+        const pingBtn = document.getElementById('checkPingBtn');
+        
+        function simulatePing() {
+            if(!pingSpan) return;
+            // анимация замера
+            pingSpan.innerHTML = '...';
+            pingSpan.style.opacity = '0.5';
+            const btn = pingBtn;
+            if(btn) btn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                const randomPing = Math.floor(Math.random() * (30 - 10 + 1) + 10); // 10-30 мс
+                pingSpan.innerHTML = randomPing;
+                pingSpan.style.opacity = '1';
+                // добавим мини-вибрацию цвета
+                pingSpan.style.color = '#d4a5ff';
+                setTimeout(() => { if(pingSpan) pingSpan.style.color = '#b480ff'; }, 200);
+                if(btn) btn.style.pointerEvents = 'auto';
+            }, 600);
+        }
+        
+        if(pingBtn) {
+            pingBtn.addEventListener('click', simulatePing);
+            // первый запуск при загрузке с задержкой
+            setTimeout(() => {
+                simulatePing();
+            }, 800);
+        } else if(pingSpan) {
+            // стартовое значение
+            pingSpan.innerHTML = '19';
+        }
+        
+        // 2. Анимация сердечка при клике и пульсация
+        const heart = document.getElementById('heartIcon');
+        if(heart) {
+            heart.addEventListener('click', () => {
+                heart.classList.add('heartbeat');
+                setTimeout(() => {
+                    heart.classList.remove('heartbeat');
+                }, 1000);
+                // дополнительно изменение размера
+                heart.style.transform = 'scale(1.3)';
+                setTimeout(() => { heart.style.transform = 'scale(1)'; }, 300);
+            });
+            // небольшая периодическая пульсация для привлечения внимания
+            setInterval(() => {
+                if(!heart.matches(':hover')) {
+                    heart.style.textShadow = '0 0 6px #ff99ee';
+                    setTimeout(() => { heart.style.textShadow = 'none'; }, 400);
+                }
+            }, 3000);
+        }
+        
+        // 3. Главная кнопка телеграм
+        const tgBtn = document.getElementById('mainTelegramBtn');
+        if(tgBtn) {
+            tgBtn.addEventListener('click', () => {
+                window.open('https://t.me/vpnslutbot', '_blank');
+            });
+        }
+        
+        // 4. Копирование и Happ
+        const copyFreeBtn = document.getElementById('copyFreeBtn');
+        if(copyFreeBtn) {
+            copyFreeBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(freeSubscriptionUrl).then(() => {
+                    alert('✅ Ссылка скопирована!\nИмпортируйте в Happ, Incy или любой VLESS-клиент.');
+                }).catch(() => {
+                    alert('Нажмите на ссылку вручную и скопируйте');
+                });
+            });
+        }
+        
+        const addToHapp = document.getElementById('addToHappBtn');
+        if(addToHapp) {
+            addToHapp.addEventListener('click', () => {
+                const urlScheme = `happ://import?url=${encodeURIComponent(freeSubscriptionUrl)}`;
+                window.location.href = urlScheme;
+                setTimeout(() => {
+                    alert('Если Happ не открылся — установите приложение Happ из AppStore/GooglePlay, затем вставьте ссылку вручную.');
+                }, 800);
+            });
+        }
+        
+        // 5. Появление скрытой подписки при скролле
+        const giftSection = document.getElementById('secretGift');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    giftSection.classList.add('visible');
+                    observer.unobserve(giftSection);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: "0px 0px 80px 0px" });
+        if(giftSection) observer.observe(giftSection);
+        
+        // 6. Анимация цифр для статистики
+        const animateNumber = (el, target, suffix = '') => {
+            if(!el) return;
+            let current = 0;
+            const step = Math.ceil(target / 35);
+            const timer = setInterval(() => {
+                current += step;
+                if(current >= target) {
+                    el.innerText = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    el.innerText = current + suffix;
+                }
+            }, 25);
+        };
+        const statServers = document.getElementById('statServers');
+        const statCountries = document.getElementById('statCountries');
+        if(statServers) animateNumber(statServers, 12, '+');
+        if(statCountries) animateNumber(statCountries, 6, '');
+        
+        // 7. Видео-логотип (локальный файл anim.mp4, если не загрузится - иконка)
+        const videoElem = document.querySelector('#slutVideo');
+        if(videoElem) {
+            videoElem.addEventListener('error', () => {
+                const parent = document.querySelector('.video-logo');
+                if(parent) {
+                    parent.style.display = 'flex';
+                    parent.style.alignItems = 'center';
+                    parent.style.justifyContent = 'center';
+                    parent.innerHTML = '<span style="font-size: 32px;">💜</span>';
+                }
+            });
+        }
+        
+        // 8. Микро-анимации при наведении на кнопки бота и дополнительные эффекты
+        const btnsHover = document.querySelectorAll('.btn-secondary, .btn-primary');
+        btnsHover.forEach(btn => {
+            btn.addEventListener('mouseenter', (e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+            });
+            btn.addEventListener('mouseleave', (e) => {
+                e.currentTarget.style.transform = 'translateY(0px)';
+            });
+        });
+        
+        // 9. Случайное изменение числа пользователей онлнайн (эффект динамики)
+        const statOnline = document.getElementById('statOnline');
+        if(statOnline) {
+            setInterval(() => {
+                const fakeUsers = Math.floor(Math.random() * (1240 - 980 + 1) + 980);
+                statOnline.innerHTML = fakeUsers;
+            }, 15000);
+        }
+        
+        // 10. Плавное появление блока с пингом
+        const pingWidget = document.getElementById('pingWidget');
+        if(pingWidget) {
+            pingWidget.style.opacity = '0';
+            pingWidget.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                pingWidget.style.transition = 'all 0.5s ease';
+                pingWidget.style.opacity = '1';
+                pingWidget.style.transform = 'translateY(0)';
+            }, 200);
+        }
+        
+        // Добавляем random факт о сервере при клике на пинг
+        if(pingBtn) {
+            pingBtn.addEventListener('click', () => {
+                const messages = ['🚀 Пик скорости 980 Мбит/с', '🔒 SSL-сертификат REALITY', '🌍 Узел в Амстердаме', '⚡ Bypass белых списков активен'];
+                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+                const toast = document.createElement('div');
+                toast.innerText = randomMsg;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '20px';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.background = '#2a1555';
+                toast.style.color = '#e6ccff';
+                toast.style.padding = '0.5rem 1.2rem';
+                toast.style.borderRadius = '40px';
+                toast.style.fontSize = '0.8rem';
+                toast.style.zIndex = '999';
+                toast.style.backdropFilter = 'blur(12px)';
+                toast.style.border = '1px solid #b77eff';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            });
+        }
+    })();
+</script>
+</body>
+</html>
